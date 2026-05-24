@@ -1,0 +1,118 @@
+﻿<Window x:Class="LetterGeneratorApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Генератор писем DOCX" Height="700" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+    <Grid Margin="20">
+        <StackPanel VerticalAlignment="Stretch">
+            <!-- Заголовок -->
+            <TextBlock Text="Генератор писем в формате DOCX" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Margin="0,0,0,30"
+                       Foreground="#333"/>
+
+            <!-- Форма ввода данных -->
+            <StackPanel Background="White" Padding="20" CornerRadius="8" Margin="0,0,0,20">
+                <!-- ФИО адресата -->
+                <TextBlock Text="ФИО адресата:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="RecipientNameTextBox" 
+                         Height="40" 
+                         Padding="10" 
+                         Margin="0,0,0,15"
+                         Text="Иван Иванович Иванов"/>
+
+                <!-- Должность адресата -->
+                <TextBlock Text="Должность адресата:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="RecipientPostTextBox" 
+                         Height="40" 
+                         Padding="10" 
+                         Margin="0,0,0,15"
+                         Text="Генеральный директор"/>
+
+                <!-- Название компании -->
+                <TextBlock Text="Название компании:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="CompanyNameTextBox" 
+                         Height="40" 
+                         Padding="10" 
+                         Margin="0,0,0,15"
+                         Text="ООО 'Компания'"/>
+
+                <!-- Тема письма -->
+                <TextBlock Text="Тема письма:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="LetterSubjectTextBox" 
+                         Height="40" 
+                         Padding="10" 
+                         Margin="0,0,0,15"
+                         Text="Предложение о сотрудничестве"/>
+
+                <!-- Дата письма -->
+                <TextBlock Text="Дата письма:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <DatePicker x:Name="LetterDatePicker" 
+                            Height="40" 
+                            Padding="10" 
+                            Margin="0,0,0,15"/>
+
+                <!-- Тело письма -->
+                <TextBlock Text="Текст письма:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="LetterBodyTextBox" 
+                         Height="150" 
+                         Padding="10" 
+                         Margin="0,0,0,15"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         Text="Уважаемый(ая) {RECIPIENT_NAME}!&#10;&#10;Данное письмо направляется Вам в целях уточнения условий нашего сотрудничества.&#10;&#10;С уважением,&#10;Отправитель"/>
+
+                <!-- ФИО подписывающего -->
+                <TextBlock Text="ФИО подписывающего:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="SenderNameTextBox" 
+                         Height="40" 
+                         Padding="10" 
+                         Margin="0,0,0,15"
+                         Text="Петр Петрович Петров"/>
+
+                <!-- Должность подписывающего -->
+                <TextBlock Text="Должность подписывающего:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBox x:Name="SenderPostTextBox" 
+                         Height="40" 
+                         Padding="10" 
+                         Margin="0,0,0,20"
+                         Text="Менеджер по продажам"/>
+            </StackPanel>
+
+            <!-- Кнопки -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                <Button Content="Создать письмо" 
+                        Width="200" 
+                        Height="50" 
+                        Background="#4CAF50" 
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Margin="0,0,15,0"
+                        Click="GenerateLetterButton_Click"
+                        Cursor="Hand"/>
+
+                <Button Content="Очистить форму" 
+                        Width="150" 
+                        Height="50" 
+                        Background="#2196F3" 
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Click="ClearFormButton_Click"
+                        Cursor="Hand"/>
+            </StackPanel>
+
+            <!-- Статус сообщение -->
+            <TextBlock x:Name="StatusTextBlock" 
+                       Text="" 
+                       Foreground="#4CAF50"
+                       FontSize="14"
+                       TextAlignment="Center"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+        </StackPanel>
+    </Grid>
+</Window>>
