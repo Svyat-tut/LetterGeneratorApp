@@ -14,72 +14,74 @@
                        Foreground="#333"/>
 
             <!-- Форма ввода данных -->
-            <StackPanel Background="White" Padding="20" CornerRadius="8" Margin="0,0,0,20">
-                <!-- ФИО адресата -->
-                <TextBlock Text="ФИО адресата:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <TextBox x:Name="RecipientNameTextBox" 
-                         Height="40" 
-                         Padding="10" 
-                         Margin="0,0,0,15"
-                         Text="Иван Иванович Иванов"/>
+            <Border Background="White" CornerRadius="8" Margin="0,0,0,20">
+                <StackPanel Margin="20">
+                    <!-- ФИО адресата -->
+                    <TextBlock Text="ФИО адресата:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="RecipientNameTextBox" 
+                             Height="40" 
+                             Padding="10" 
+                             Margin="0,0,0,15"
+                             Text="Иван Иванович Иванов"/>
 
-                <!-- Должность адресата -->
-                <TextBlock Text="Должность адресата:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <TextBox x:Name="RecipientPostTextBox" 
-                         Height="40" 
-                         Padding="10" 
-                         Margin="0,0,0,15"
-                         Text="Генеральный директор"/>
+                    <!-- Должность адресата -->
+                    <TextBlock Text="Должность адресата:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="RecipientPostTextBox" 
+                             Height="40" 
+                             Padding="10" 
+                             Margin="0,0,0,15"
+                             Text="Генеральный директор"/>
 
-                <!-- Название компании -->
-                <TextBlock Text="Название компании:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <TextBox x:Name="CompanyNameTextBox" 
-                         Height="40" 
-                         Padding="10" 
-                         Margin="0,0,0,15"
-                         Text="ООО 'Компания'"/>
+                    <!-- Название компании -->
+                    <TextBlock Text="Название компании:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="CompanyNameTextBox" 
+                             Height="40" 
+                             Padding="10" 
+                             Margin="0,0,0,15"
+                             Text="ООО 'Компания'"/>
 
-                <!-- Тема письма -->
-                <TextBlock Text="Тема письма:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <TextBox x:Name="LetterSubjectTextBox" 
-                         Height="40" 
-                         Padding="10" 
-                         Margin="0,0,0,15"
-                         Text="Предложение о сотрудничестве"/>
+                    <!-- Тема письма -->
+                    <TextBlock Text="Тема письма:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="LetterSubjectTextBox" 
+                             Height="40" 
+                             Padding="10" 
+                             Margin="0,0,0,15"
+                             Text="Предложение о сотрудничестве"/>
 
-                <!-- Дата письма -->
-                <TextBlock Text="Дата письма:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <DatePicker x:Name="LetterDatePicker" 
-                            Height="40" 
-                            Padding="10" 
-                            Margin="0,0,0,15"/>
+                    <!-- Дата письма -->
+                    <TextBlock Text="Дата письма:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <DatePicker x:Name="LetterDatePicker" 
+                                Height="40" 
+                                Padding="10" 
+                                Margin="0,0,0,15"/>
 
-                <!-- Тело письма -->
-                <TextBlock Text="Текст письма:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <TextBox x:Name="LetterBodyTextBox" 
-                         Height="150" 
-                         Padding="10" 
-                         Margin="0,0,0,15"
-                         TextWrapping="Wrap"
-                         VerticalScrollBarVisibility="Auto"
-                         Text="Уважаемый(ая) {RECIPIENT_NAME}!&#10;&#10;Данное письмо направляется Вам в целях уточнения условий нашего сотрудничества.&#10;&#10;С уважением,&#10;Отправитель"/>
+                    <!-- Тело письма -->
+                    <TextBlock Text="Текст письма:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="LetterBodyTextBox" 
+                             Height="150" 
+                             Padding="10" 
+                             Margin="0,0,0,15"
+                             TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Auto"
+                             Text="Уважаемый(ая) {RECIPIENT_NAME}!&#10;&#10;Данное письмо направляется Вам в целях уточнения условий нашего сотрудничества.&#10;&#10;С уважением,&#10;Отправитель"/>
 
-                <!-- ФИО подписывающего -->
-                <TextBlock Text="ФИО подписывающего:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <TextBox x:Name="SenderNameTextBox" 
-                         Height="40" 
-                         Padding="10" 
-                         Margin="0,0,0,15"
-                         Text="Петр Петрович Петров"/>
+                    <!-- ФИО подписывающего -->
+                    <TextBlock Text="ФИО подписывающего:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="SenderNameTextBox" 
+                             Height="40" 
+                             Padding="10" 
+                             Margin="0,0,0,15"
+                             Text="Петр Петрович Петров"/>
 
-                <!-- Должность подписывающего -->
-                <TextBlock Text="Должность подписывающего:" FontWeight="Bold" Margin="0,0,0,5"/>
-                <TextBox x:Name="SenderPostTextBox" 
-                         Height="40" 
-                         Padding="10" 
-                         Margin="0,0,0,20"
-                         Text="Менеджер по продажам"/>
-            </StackPanel>
+                    <!-- Должность подписывающего -->
+                    <TextBlock Text="Должность подписывающего:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <TextBox x:Name="SenderPostTextBox" 
+                             Height="40" 
+                             Padding="10" 
+                             Margin="0,0,0,20"
+                             Text="Менеджер по продажам"/>
+                </StackPanel>
+            </Border>
 
             <!-- Кнопки -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
