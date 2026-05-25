@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using LetterGeneratorApp.Services;
 
@@ -11,6 +11,11 @@ namespace LetterGeneratorApp
         public MainWindow()
         {
             InitializeComponent();
+            
+            // Убедиться, что шаблон существует и валиден
+            string templatePath = System.IO.Path.Combine("Templates", "letter_template.docx");
+            TemplateInitializer.EnsureTemplateExists(templatePath);
+            
             _documentService = new DocumentGenerationService();
             
             // Установить сегодняшнюю дату по умолчанию
