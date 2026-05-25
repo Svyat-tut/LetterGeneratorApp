@@ -11,11 +11,14 @@ namespace LetterGeneratorApp.Services
 {
     public class DocumentGenerationService
     {
-        private const string TemplateFileName = "Templates/letter_template.docx";
+        private readonly string TemplateFileName;
         private const string OutputDirectory = "GeneratedLetters";
 
         public DocumentGenerationService()
         {
+            // Использовать кросс-платформенный путь
+            TemplateFileName = Path.Combine("Templates", "letter_template.docx");
+            
             // Создать директорию для сохранения писем, если её нет
             if (!Directory.Exists(OutputDirectory))
             {
@@ -30,29 +33,39 @@ namespace LetterGeneratorApp.Services
 
             // Проверить существование шаблона
             if (!File.Exists(TemplateFileName))
-                throw new FileNotFoundException($"Шаблон документа не найден: {TemplateFileName}");
-
-            // Создать имя выходного файла
-            string outputFileName = GenerateOutputFileName(letterData.RecipientName);
-            string outputPath = Path.Combine(OutputDirectory, outputFileName);
-
-            // Копировать шаблон в новый файл
-            File.Copy(TemplateFileName, outputPath, overwrite: true);
-
-            // Открыть документ и заменить плейсхолдеры
-            using (WordprocessingDocument doc = WordprocessingDocument.Open(outputPath, isEditable: true))
             {
-                // Заменить в основном теле документа
-                ReplaceTextInBody(doc.MainDocumentPart!.Document.Body!, letterData);
-
-                // Заменить в колонтитулах (если они есть)
-                ReplaceTextInHeadersFooters(doc, letterData);
-
-                // Сохранить изменения
-                doc.MainDocumentPart.Document.Save();
+                string fullPath = Path.GetFullPath(TemplateFileName);
+                throw new FileNotFoundException($"Шаблон документа не найден.\n\nОжидаемый путь: {fullPath}\n\nПожалуйста, убедитесь, что файл 'letter_template.docx' находится в папке 'Templates'");
             }
 
-            return Path.GetFullPath(outputPath);
+            try
+            {
+                // Создать имя выходного файла
+                string outputFileName = GenerateOutputFileName(letterData.RecipientName);
+                string outputPath = Path.Combine(OutputDirectory, outputFileName);
+
+                // Копировать шаблон в новый файл
+                File.Copy(TemplateFileName, outputPath, overwrite: true);
+
+                // Открыть документ и заменить плейсхолдеры
+                using (WordprocessingDocument doc = WordprocessingDocument.Open(outputPath, isEditable: true))
+                {
+                    // Заменить в основном теле документа
+                    ReplaceTextInBody(doc.MainDocumentPart!.Document.Body!, letterData);
+
+                    // Заменить в колонтитулах (если они есть)
+                    ReplaceTextInHeadersFooters(doc, letterData);
+
+                    // Сохранить изменения
+                    doc.MainDocumentPart.Document.Save();
+                }
+
+                return Path.GetFullPath(outputPath);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Ошибка при создании документа: {ex.Message}", ex);
+            }
         }
 
         private void ReplaceTextInBody(Body body, LetterData letterData)
